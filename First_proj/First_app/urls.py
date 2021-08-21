@@ -11,5 +11,6 @@ urlpatterns = [
     path('blogs/<int:my_val>', views.number),
     path('blogs/<int:my_val>/edit', views.edit),
     path('blogs/<int:my_val>/delete', views.delete),
+    path('blogs/json', views.json),
 
 ]

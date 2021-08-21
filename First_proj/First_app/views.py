@@ -1,5 +1,11 @@
 from django.db.models.fields import EmailField
 from django.shortcuts import redirect, render, HttpResponse
+from django.http import JsonResponse
+
+
+def json(request):
+    return JsonResponse({"key": "value"})
+
 #from .models import Cliente
 def index(request):
     redirect("/")
