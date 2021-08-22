@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Random Word Generator</title>
+
+    
+    <script language="JavaScript"> 
+
+    
+    </script> 
+
+
+</head>
+<body class='bg-secondary'>
+    <div class='container'>
+        <div class="col-sm-6 bg-success text-light text-center offset-sm-3 mt-4 p-4 rounded-3 border border-primary border-2">
+            <h1>Random Word Generator App</h1>
+        </div>
+        <br>
+        <form action="/" method="POST">
+            {% csrf_token %}
+            <div class="col-sm-6 bg-warning text-center offset-sm-3 mt-4 p-4 rounded-3 border border-danger border-2">
+                <h3>Palabra generada #{{ counter }}</h3>
+                <h2 class="container p-3">{{ rndStr }}</h2>
+                <input type="submit" value="Generar" class="btn btn-success">
+                <button class="btn btn-primary" type="submit" formaction="/reset">Reset</button>
+            </div>
+        </form>
+            
+        <br>
+    
+    </div>
+    
+
+
+    
+
+</body>
+</html>
