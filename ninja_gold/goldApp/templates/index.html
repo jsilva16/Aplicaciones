@@ -67,9 +67,9 @@
         <div class="activities overflow-auto col col-sm-8 border border-radius border-2 border-info offset-sm-2" style="height: 200px" id="scroll">
             {% for move in request.session.moves %}
                 {% if move.0 < 0 %}
-                    <p>Has perdido {{move.0}} oro en {{move.1}} ({{move.2}})</p>
+                    <p>You have lost {{move.3}} gold in the {{move.1}} ({{move.2}})</p>
                 {% else %}
-                    <p>Has ganado {{move.0}} oro en {{move.1}} ({{move.2}})</p>
+                    <p>You have won {{move.0}} gold in the {{move.1}} ({{move.2}})</p>
                 {% endif %}
             {% endfor %}
         </div>

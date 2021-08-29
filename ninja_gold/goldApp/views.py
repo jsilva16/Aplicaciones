@@ -30,7 +30,12 @@ def process_money(request):
     if "casino" in request.POST:  #pregunta si el valor farm esta en el formulario
         r_casino=randint(-50,50)   #se obtiene un valor aleatorio entre -50 y 50
         request.session['money'] += r_casino
-        request.session['moves'].append([r_casino, 'casino', time])
+        
+        if r_casino<0:
+            r_casino2=r_casino*-1
+            request.session['moves'].append([r_casino, 'casino', time, r_casino2])
+        else:
+            request.session['moves'].append([r_casino, 'casino', time])
         
     return redirect('/')
 
