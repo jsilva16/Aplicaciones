@@ -11,39 +11,62 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Ninja Gold</title>
 </head>
-<body>
-    <div Class= "container">
-        <label for="">Your gold:</label>
-        <h3>{{ request.session.money }}</h3>
-
+<body class= "bg-light">
+    <h1 class="text-center m-4" >Ninja Gold App</h1>
+    <div Class= "container text-center">
+        <div>        
+            <label for="">Your gold:</label>
+            <h3>{{ request.session.money }}</h3>
+        </div>
         <hr>
-        <div Class="">
+        <div Class="col col-sm-2 border rounded border-2 border-primary text-center p-3 m-2 bg-secondary text-light d-inline-block">
+            <h2>FARM</h2>
+            <h5>Earns 10-20 golds</h5>
+            <br>
             <form action="process_money" method= POST>
                 {% csrf_token %}
                 <input type="hidden" name="farm">
-                <button type="submit">Find gold!</button>
+                <button class="btn btn-success" type="submit">Find gold!</button>
             </form>
         </div>
-        <div Class="">
+        <div Class="col col-sm-2 border rounded border-2 border-primary text-center p-3 m-2 bg-secondary text-light d-inline-block">
+            <h2>CAVE</h2>
+            <h5>Earns 5-10 golds</h5>
+            <br>
             <form action="process_money" method= POST>
                 {% csrf_token %}
                 <input type="hidden" name="cave">
-                <button type="submit">Find gold!</button>
+                <button class="btn btn-success" type="submit">Find gold!</button>
             </form>
         </div>
-        <div Class="">
+        <div Class="col col-sm-2 border rounded border-2 border-primary text-center p-3 m-2 bg-secondary text-light d-inline-block">
+            <h2>HOUSE</h2>
+            <h5>Earns 2-5 golds</h5>
+            <br>
             <form action="process_money" method= POST>
                 {% csrf_token %}
                 <input type="hidden" name="house">
-                <button type="submit">Find gold!</button>
+                <button class="btn btn-success" type="submit">Find gold!</button>
             </form>
         </div>
-        <div Class="col col-sm-2 border border-radius text-center p-3 m-2">
+        <div Class="col col-sm-2 border rounded border-2 border-primary text-center p-3 m-2 bg-secondary text-light d-inline-block">
+            <h2>CASINO</h2>
+            <h5>Earns/takes 0-50 golds</h5>
             <form action="process_money" method= POST>
                 {% csrf_token %}
                 <input type="hidden" name="casino">
-                <button type="submit">Find gold!</button>
+                <button class="btn btn-success" type="submit">Find gold!</button>
             </form>
+        </div>
+        <h5 class="pt-3">Activity log:</h5>
+        <div class="activities overflow-auto col col-sm-8 border border-radius border-2 border-info offset-sm-2" style="height: 200px";">
+            {% for move in request.session.moves %}
+                {% if move.0 < 0 %}
+                    <p>Has perdido {{move.0}} oro en {{move.1}} ({{move.2}})</p>
+                {% else %}
+                    <p>Has ganado {{move.0}} oro en {{move.1}} ({{move.2}})</p>
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
 </body>
