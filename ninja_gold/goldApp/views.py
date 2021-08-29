@@ -33,3 +33,10 @@ def process_money(request):
         request.session['moves'].append([r_casino, 'casino', time])
         
     return redirect('/')
+
+def reset(request):
+    del request.session['money']
+    del request.session['moves']
+    request.session['money'] = 0
+    request.session['moves'] = []
+    return render(request, 'index.html')

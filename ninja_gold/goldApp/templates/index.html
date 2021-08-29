@@ -10,6 +10,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Ninja Gold</title>
+    <script>
+        $(document).ready(function(){
+            $('#scroll').scrollTop($('#scroll')[0].scrollHeight);
+        })
+    </script>
 </head>
 <body class= "bg-light">
     <h1 class="text-center m-4" >Ninja Gold App</h1>
@@ -59,7 +64,7 @@
             </form>
         </div>
         <h5 class="pt-3">Activity log:</h5>
-        <div class="activities overflow-auto col col-sm-8 border border-radius border-2 border-info offset-sm-2" style="height: 200px";">
+        <div class="activities overflow-auto col col-sm-8 border border-radius border-2 border-info offset-sm-2" style="height: 200px" id="scroll">
             {% for move in request.session.moves %}
                 {% if move.0 < 0 %}
                     <p>Has perdido {{move.0}} oro en {{move.1}} ({{move.2}})</p>
@@ -68,6 +73,10 @@
                 {% endif %}
             {% endfor %}
         </div>
+        <form action="/" method="POST">
+            {% csrf_token %}
+            <button class="btn btn-primary mt-4" type="submit" formaction="/reset">Reset</button>
+        </form>
     </div>
 </body>
 </html>
