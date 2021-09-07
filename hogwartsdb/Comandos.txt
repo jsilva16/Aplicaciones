@@ -1,0 +1,18 @@
+SQL to ORM 
+
+Wizard.objects.create(name="Harry Potter", house="Gryffindor", pet="Gryffindor", year="5")
+Wizard.objects.create(name="Hermione Granger", house="Gryffindor", pet="Crookshanks", year="5")
+Wizard.objects.filter(id='1')
+Wizard.objects.filter(house = 'Gryffindor')
+
+Update_year = Wizard.objects.get(id=1)
+Update_year.year= 6
+Update_year.save()
+
+
+ORM to SQL
+
+INSERT INTO Hogwarts.Wizard (name, house, pet, year) VALUES ('Luna Lovegood', 'Ravenclaw', 'None', '4');
+INSERT INTO Hogwarts.Wizard (name, house, pet, year) VALUES ('Padma Patil', 'Ravenclaw', 'None', '5');
+SELECT * FROM Hogwarts.Wizard WHERE house = 'Ravenclaw';
+UPDATE Hogwarts.Wizard SET year = '5' WHERE name = 'Luna Lovegood';
