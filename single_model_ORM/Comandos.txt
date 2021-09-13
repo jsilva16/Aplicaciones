@@ -1,0 +1,36 @@
+COMANDOS USUARIOS (CORE)
+
+****Crear 3 usuarios****
+User.objects.create(first_name="Harry", last_name="Potter", email="email1@mail.com", age="15")
+User.objects.create(first_name="user2", last_name="last2", email="email2@mail.com", age="12")
+User.objects.create(first_name="user3", last_name="last3", email="email3@mail.com", age="17")
+
+****Recuperar todos los usuarios****
+
+User.objects.all().__dict__
+
+**** Recuperar el último usuario ****
+
+User.objects.last().__dict__
+
+**** Recuperar el primer usuario ****
+
+User.objects.first().__dict__
+
+**** Cambie el usuario con id = 3 para que su apellido sea Pancakes.****
+
+update_last_name = User.objects.get(id=3)
+update_last_name.last_name = "Pancakes"
+update_last_name.save()
+
+**** Eliminar el usuario con id = 2 de la base de datos ****
+delete = User.objects.get(id=2)
+delete.delete()
+
+**** Consulta: Obtenga todos los usuarios, ordenados por su nombre ****
+
+User.objects.all().order_by("first_name")
+
+**** BONUS Query: obtén todos los usuarios, ordenados por su nombre en orden descendente ****
+
+User.objects.all().order_by("-first_name") 
