@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body class="text-center">
+    <div class="wrapper">
+        <div class="header">
+            <h1>Registra tu Mascota</h1>
+        </div>
+        <br>
+        <h2>Mascota registrada</h2>
+        <table class="table table-striped col col-sm-8 offset-sm-2">
+            <tr>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Sexo</th>
+                <th>Raza</th>
+            </tr>
+            <tr>
+                <td>{{name}}</td>
+                <td>{{age}}</td>
+                <td>{{sex}}</td>
+                <td>{{race}}</td>
+            </tr>
+        </table>
+        <br>
+        <h2>Mascotas registradas en el sistema</h2>
+        <div>
+            <table class="table table-striped col col-sm-8 offset-sm-2">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Sexo</th>
+                    <th>Raza</th>
+                </tr>
+                {% for pet in lista_pets %}
+                <tr>
+                    <td>{{pet.id}}</td>
+                    <td>{{pet.name}}</td>
+                    <td>{{pet.age}}</td>
+                    <td>{{pet.sex}}</td>
+                    <td>{{pet.race}}</td>
+                    <td>
+                        <form action="pet_edit" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{pet.id}}">
+                            <button type="submit" class="btn btn-sm btn-outline-warning">Editar</button>
+                        </form>
+                        <form action="delete" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{pet.id}}">
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+                
+        </div>
+    </div>
+</body>
+</html>

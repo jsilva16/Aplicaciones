@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <h1>Registra tu Mascota</h1>
+        </div>
+        <br>
+        <div>
+            <div class="card border-primary mb-3" style="max-width: 180rem;">
+                <div class="card-header">Registrar Mascota</div>
+                <div class="card-body">
+                    <form action="pet_reg" method="POST">
+                        {% csrf_token %}
+                        <fieldset>
+                            <label for="name">Nombre:</label>
+                            <input type="text" name="name" id="name">
+                        </fieldset>
+                        <fieldset>
+                            <label for="age">Edad:</label>
+                            <input type="text" name="age" id="age">
+                        </fieldset>
+                        <fieldset>
+                            <label for="sex">Sexo:</label>
+                            <input type="text" name="sex" id="sex">
+                        </fieldset>
+                        <fieldset>
+                            <label for="race">Raza:</label>
+                            <input type="text" name="race" id="race">
+                        </fieldset>
+                        <button class="btn">Registrar</button>
+                    </form>
+                </div>
+            </div>
+            <form class="form-inline">
+                <a href="/registrar">Click para registrarte</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
