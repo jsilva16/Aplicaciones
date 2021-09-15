@@ -1,0 +1,95 @@
+COMANDOS LIBROS/AUTORES (CORE)
+
+****Crear 5 libros****
+
+C_Sharp=Book.objects.create(title="C Sharp")
+Java=Book.objects.create(title="Java")
+Python=Book.objects.create(title="Python")
+PHP=Book.objects.create(title="PHP")
+Ruby=Book.objects.create(title="Ruby")
+
+****Crear 5 libros****
+
+Jane_Austen=Publisher.objects.create(name="Jane Austen")
+Emily_Dickinson=Publisher.objects.create(name="Emily Dickinson")
+Fyodor_Dostoevksy=Publisher.objects.create(name="Fyodor Dostoevksy")
+William_Shakespeare=Publisher.objects.create(name="William Shakespeare")
+Lau_Tzu=Publisher.objects.create(name="Lau Tzu")
+
+**** Consulta: cambie el nombre del libro de C Sharp a C # ****
+
+update_title = Book.objects.get(title="C Sharp")
+update_title.title = "C #" 
+update_title.save()
+
+**** cambie el nombre del cuarto autor a Bill ****
+
+update_name = Publisher.objects.get(id=4)
+update_name.name = "Bill" 
+update_name.save()
+
+**** Consulta: Asigna el primer autor a los primeros 2 libros. ****
+
+author1= Publisher.objects.get(id=1)
+book1= Book.objects.get(id=1)
+book2= Book.objects.get(id=2)
+author1.books.add(book1)
+author1.books.add(book2)
+
+**** Consulta: Asigne el segundo autor a los primeros 3 libros. ****
+
+author2= Publisher.objects.get(id=2)
+book1= Book.objects.get(id=1)
+book2= Book.objects.get(id=2)
+book3= Book.objects.get(id=3)
+author2.books.add(book1)
+author2.books.add(book2)
+author2.books.add(book3)
+
+**** Consulta: Asigna el tercer autor a los primeros 4 libros. ****
+
+author3= Publisher.objects.get(id=3)
+book1= Book.objects.get(id=1)
+book2= Book.objects.get(id=2)
+book3= Book.objects.get(id=3)
+book4= Book.objects.get(id=4)
+author3.books.add(book1)
+author3.books.add(book2)
+author3.books.add(book3)
+author3.books.add(book4)
+
+**** Consulta: Asigne el cuarto autor a los primeros 5 libros (o en otras palabras, todos los libros) ****
+
+author4= Publisher.objects.get(id=4)
+book1= Book.objects.get(id=1)
+book2= Book.objects.get(id=2)
+book3= Book.objects.get(id=3)
+book4= Book.objects.get(id=4)
+book5= Book.objects.get(id=5)
+author4.books.add(book1)
+author4.books.add(book2)
+author4.books.add(book3)
+author4.books.add(book4)
+author4.books.add(book5)
+
+**** Consulta: recupera a todos los autores del tercer libro ****
+
+book3= Book.objects.get(id=3)
+book3.publishers.all()
+
+**** Consulta: eliminar al primer autor del tercer libro ****
+
+book3.publishers.remove(author2)
+
+**** Consulta: Agregue el quinto autor como uno de los autores del segundo libro. ****
+
+author5= Publisher.objects.get(id=5)
+book2.publishers.add(author5)
+
+**** Consulta: Encuentra todos los libros de los que el tercer autor es parte **** 
+
+author3.books.all()
+
+**** Consulta: Encuentra todos los autores que contribuyeron al quinto libro. **** 
+
+book5.publishers.all()
