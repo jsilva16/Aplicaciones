@@ -1,0 +1,59 @@
+COMANDOS LIBROS/AUTORES (CORE)
+
+****Crear 3 dojos****
+
+Dojo.objects.create(name="dojo1", city="city1", state="state")
+Dojo.objects.create(name="dojo2", city="city1", state="state")
+Dojo.objects.create(name="dojo3", city="city1", state="state")
+
+****eliminar los 3 dojos****
+
+dojo1=Dojo.objects.get(name="dojo1")
+dojo2=Dojo.objects.get(name="dojo2")
+dojo3=Dojo.objects.get(name="dojo3")
+
+dojo1.delete()
+dojo2.delete()
+dojo3.delete()
+
+
+****Crear 3 nuevos dojos****
+
+Dojo.objects.create(name="dojo4", city="city1", state="state")
+Dojo.objects.create(name="dojo5", city="city1", state="state")
+Dojo.objects.create(name="dojo6", city="city1", state="state")
+
+****Crear 3 ninjas pertenecientes al primer dojo****
+dojo4=Dojo.objects.get(name="dojo4")
+
+ninja1=Ninja.objects.create(first_name="ninja1", last_name="lastname", dojo=dojo4)
+ninja2=Ninja.objects.create(first_name="ninja2", last_name="lastname", dojo=dojo4)
+ninja3=Ninja.objects.create(first_name="ninja3", last_name="lastname", dojo=dojo4)
+
+****Crear 3 ninjas pertenecientes al segundo dojo****
+dojo5=Dojo.objects.get(name="dojo5")
+
+ninja4=Ninja.objects.create(first_name="ninja4", last_name="lastname", dojo=dojo5)
+ninja5=Ninja.objects.create(first_name="ninja5", last_name="lastname", dojo=dojo5)
+ninja6=Ninja.objects.create(first_name="ninja6", last_name="lastname", dojo=dojo5)
+
+****Crear 3 ninjas pertenecientes al tercer dojo****
+dojo6=Dojo.objects.get(name="dojo6")
+
+ninja7=Ninja.objects.create(first_name="ninja7", last_name="lastname", dojo=dojo6)
+ninja8=Ninja.objects.create(first_name="ninja8", last_name="lastname", dojo=dojo6)
+ninja9=Ninja.objects.create(first_name="ninja9", last_name="lastname", dojo=dojo6)
+
+**** Consulta: recupera todos los ninjas del primer dojo ****
+first_dojo = Dojo.objects.first()
+ninjas_dojo4 = Ninja.objects.filter(dojo=first_dojo)
+
+
+**** Consulta: recupera todos los ninjas del ultimo dojo ****
+last_dojo = Dojo.objects.last()
+ninjas_dojo6 = Ninja.objects.filter(dojo=last_dojo)
+
+**** Crea un nuevo dojo **** 
+
+Dojo.objects.create(name="dojo7", city="city1", state="state", desc="primer dojo luego de la migracion")
+
