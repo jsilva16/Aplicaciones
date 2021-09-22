@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <title>Books Authors App</title>
+
+</head>
+<body class='bg-light'>
+    <div class='container d-inline-block'>
+        <div class="col-sm-6 text-center offset-sm-3 mt-4 p-4 " >
+            <h1>Book #{{ book.id }}</h1>
+            <h3> {{ book.title }}</h3>
+        </div>
+        <br>
+        <div class = "offset-sm-1">
+            <div class="card col col-sm-5 d-inline-block ">
+                <h3 class="text-center">Description</h3>
+                <p> {{ book.description}}
+            </div>
+            <div class="card col col-sm-6 d-inline-block ">
+                <h3 class="text-center">Authors</h3>
+                <table class="table table-striped  text-center  ">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First name</th>
+                            <th>Last name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for author in book_authors %}
+                            <tr>
+                                <td>{{author.id}}</td>
+                                <td>{{author.first_name}}</td>
+                                <td>{{author.last_name}}</td>
+                                
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    
+                </table>
+                <div class= "text-center" >
+                    <form action="/add_author" method="POST"> 
+                        <label for="">Añadir author</label>
+                        <select name="author_id" id="author_id" class="form-control">
+                            <option value="0" selected>Selecciona un autor</option>
+                            {% for author in publishers %}
+                                {% if author not in book_authors %}
+                                <option value={{author.id}}>{{author.first_name}} {{author.last_name}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                        {% csrf_token %}
+                        <input type="hidden" name="book_id" value="{{book.id}}">
+                        <button type="submit" class="btn btn-sm btn-outline-warning m-3 p-2">Añadir</button> 
+                    </form> 
+                </div>
+            </div>
+        </div>
+            
+        <br>
+    </div>
+</body>
+</html>
