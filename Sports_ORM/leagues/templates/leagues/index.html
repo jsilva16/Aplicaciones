@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sports Leagues</title>
+</head>
+<body>
+	<h2>CONSULTA 1</h2>
+	<h3>Muestra todas las ligas de béisbol</h3>
+		<ol>
+			{% for league in leagues %}
+			{% if league.sport == "Baseball" %}
+				<li>{{league.name}}</li>
+			
+			{% endif %}
+			{% endfor %}
+		</ol>
+		<br>
+	<h2>CONSULTA 2</h2>
+	<h3>Muestra todas las ligas de mujeres</h3>
+		<ol>
+			{% for league in women_leagues %}
+			<li>{{league.name}}</li>
+			{% endfor %}
+		</ol>
+		<br>
+	<h2>CONSULTA 3</h2>
+	<h3>Muestra todas las ligas donde el deporte es cualquier tipo de hockey</h3>
+		<ol>
+			{% for league in hockey_leagues %}
+			<li>{{league.name}}</li>
+			{% endfor %}
+		</ol>
+	<br>
+	<h2>CONSULTA 4</h2>
+	<h3>Muestra todas las ligas donde el deporte no sea football</h3>
+		<ol>
+			{% for league in leagues %}
+			{% if league not in football_leagues %}
+				<li>{{league.name}}</li>
+			
+			{% endif %}
+			{% endfor %}
+		</ol>
+	<br>
+	<h2>CONSULTA 5</h2>
+	<h3>Muestra todas las ligas que se llaman "conferencias"</h3>
+		<ol>
+			{% for league in conference_leagues %}
+			<li>{{league.name}}</li>
+			{% endfor %}
+		</ol>
+	<br>
+	<h2>CONSULTA 6</h2>
+	<h3>Muestra todas las ligas de la región atlántica</h3>
+		<ol>
+			{% for league in conference_leagues %}
+			<li>{{league.name}}</li>
+			{% endfor %}
+		</ol>
+	<br>
+	<h2>CONSULTA 7</h2>
+	<h3>Muestra todos los equipos con sede en Dallas</h3>
+		<ol>
+			{% for team in teams %}
+			{% if team.location == "Dallas" %}
+				<li>{{team.team_name}}</li>
+			
+			{% endif %}
+			{% endfor %}
+		</ol>
+	<br>
+	<h2>CONSULTA 8</h2>
+	<h3>Muestra todos los equipos nombrados Raptors</h3>
+		<ol>
+			{% for team in teams %}
+			{% if team.team_name == "Raptors" %}
+				<li>{{team.location}} {{team.team_name}}</li>
+			
+			{% endif %}
+			{% endfor %}
+		</ol>
+	<br>
+	<h2>CONSULTA 9</h2>
+	<h3>Muestra todos los equipos cuya ubicación incluye "Ciudad"</h3>
+		<ol>
+			{% for team in city_team %}
+				<li>{{team.location}} {{team.team_name}}</li>
+			{% endfor %}
+		</ol>
+	<br>
+	<h2>CONSULTA 10</h2>
+	<h3>Muestra todos los equipos cuyos nombres comienzan con "T"</h3>
+		<ol>
+			{% for team in t_team %}
+				<li>{{team.location}} {{team.team_name}}</li>
+			{% endfor %}
+		</ol>
+	<br>
+	<h2>CONSULTA 11</h2>
+	<h3>Muestra todos los equipos, ordenados alfabéticamente por ubicación</h3>
+		<ol>
+			{% for team in teams %}
+				<li>{{team.location}} {{team.team_name}}</li>
+			{% endfor %}
+		</ol>
+	<br>
+	<h2>CONSULTA 12</h2>
+	<h3>Muestra todos los equipos, ordenados por nombre de equipo en orden alfabético inverso</h3>
+		<ol>
+			{% for team in inverted_teams %}
+				<li>{{team.location}} {{team.team_name}}</li>
+			{% endfor %}
+		</ol>
+	<br>
+	<h2>CONSULTA 13</h2>
+	<h3>Muestra cada jugador con apellido "Cooper"</h3>
+		<ol>
+			{% for player in cooper_players %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% endfor %}
+		</ol>
+	<br>
+	<h2>CONSULTA 14</h2>
+	<h3>Muestra cada jugador con nombre "Joshua"</h3>
+		<ol>
+			{% for player in joshua_players %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% endfor %}
+		</ol>
+	<br>
+	<h2>CONSULTA 15</h2>
+	<h3>Muestra todos los jugadores con el apellido "Cooper" EXCEPTO aquellos con "Joshua" como primer nombre</h3>
+		<ol>
+			{% for player in cooper_notJoshua_players %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% endfor %}
+		</ol>
+	<br>
+	<h2>CONSULTA 16</h2>
+	<h3>Muestra todos los jugadores con nombre "Alexander" O nombre "Wyatt"</h3>
+		<ol>
+			{% for player in players_name_filter %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% endfor %}
+		</ol>
+
+
