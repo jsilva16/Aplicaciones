@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+
+    <title>Add TV Shows</title>
+</head>
+<body>
+    
+    <div class="container ">
+        <br>
+        <h1 class="text-center">Edit show</h1>
+        <br>
+        <div class="row">
+            <div class="col-sm-8 offset-sm-2">
+                <div class="card card-secondary border-4 text-right ">
+                    <form action="add_show">
+                        {%csrf_token%}
+                        <div class="row offset-sm-3">
+                            <div class="d-inline-block">
+                                <label for="title">Title</label><br>
+                                <input type="text" size='38' name="update_show_title">
+                            </div>
+                            
+                        </div>
+                        <div class="row d-inline-block offset-sm-3">
+                            <div class="col-sm-4 d-inline-block">
+                                <label for="network">Network</label>
+                                <input type="text" name="update_network">
+                            </div>
+                            <div class="col-sm-4 d-inline-block m-4 offset-sm-3">
+                                <label for="rel_date">Release Date</label>
+                                <input type="date" name="update_rel_date">
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class = "d-inline-block offset-sm-3 mb-4">
+                                <label for="desc">Description</label><br>
+                                <input type="textarea" size='38' name="update_show_desc">
+                            </div>
+                            
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary mb-4">Add show</button>
+                        </div>
+                        
+                    </form>
+                    
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+
+</body>
+</html>
