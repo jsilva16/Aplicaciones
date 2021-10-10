@@ -11,18 +11,25 @@
 <body>
     
     <div class="container ">
+        <div class="row">
+            <div class="col col-sm-2 text-right" style="float:right; position:absolute right;">
+                <a href="/">Go back</a>
+            </div>
+        </div>
+            
         <br>
         <h1 class="text-center">Add new show</h1>
         <br>
         <div class="row">
             <div class="col-sm-8 offset-sm-2">
                 <div class="card card-secondary border-4 text-right ">
-                    <form action="add_show">
+                    <form action="add_new_show" method="POST">
                         {%csrf_token%}
+                        <br>
                         <div class="row offset-sm-3">
                             <div class="d-inline-block">
-                                <label for="title">Title</label><br>
-                                <input type="text" size='38' name="show_title">
+                                <label for="show_title">Title</label><br>
+                                <input type="text" size='38' id="show_title" name="show_title">
                             </div>
                             
                         </div>

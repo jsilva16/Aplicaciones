@@ -11,6 +11,11 @@
 <body>
     
     <div class="container text-center">
+        <div class="row">
+            <div class="col col-sm-2 text-right" style="float:right; position:absolute right;">
+                <a href="/">Go back</a>
+            </div>
+        </div>
         <br>
         <h1>All Shows</h1>
         <br>
@@ -27,17 +32,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- INCLUIR ACA EL FOR DE LOS SHOWS-->
+                        {% for show in shows %}<!-- INCLUIR ACA EL FOR DE LOS SHOWS-->
                         <tr>
-
+                            <td>{{show.id}}</td>
+                            <td>{{show.title}}</td>
+                            <td>{{show.network.name}}</td>
+                            <td>{{show.release_date}}</td>
+                            <td>
+                                <a href="/shows/{{show.id}}">Show</a>|<a href="/shows/{{show.id}}/edit">Edit</a>|<a href="/shows/{{show.id}}/delete">Delete</a>
+                            </td>
                         </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
 
             </div>
         </div>
         <div class= "row">
-            <input type="text">
+            <a href="shows/new">Add new Show</a>
         </div>
     </div>
 

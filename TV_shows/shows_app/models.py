@@ -11,4 +11,6 @@ class Show(models.Model):
     release_date = models.DateTimeField()
     description = models.TextField(default='')
     network = models.ForeignKey(Networks, related_name='shows', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 

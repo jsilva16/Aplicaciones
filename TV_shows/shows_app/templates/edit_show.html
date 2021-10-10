@@ -11,25 +11,30 @@
 <body>
     
     <div class="container ">
+        <div class="row">
+            <div class="col col-sm-2 text-right" style="float:right; position:absolute right;">
+                <a href="/">Go back</a>
+            </div>
+        </div>
         <br>
-        <h1 class="text-center">Edit show</h1>
+        <h1 class="text-center">Edit show #{{update_show.id}}</h1>
         <br>
         <div class="row">
             <div class="col-sm-8 offset-sm-2">
                 <div class="card card-secondary border-4 text-right ">
-                    <form action="add_show">
+                    <form action="update_show" method="POST">
                         {%csrf_token%}
                         <div class="row offset-sm-3">
                             <div class="d-inline-block">
                                 <label for="title">Title</label><br>
-                                <input type="text" size='38' name="update_show_title">
+                                <input type="text" size='38' name="update_show_title" placeholder="{{update_show.title}}">
                             </div>
                             
                         </div>
                         <div class="row d-inline-block offset-sm-3">
                             <div class="col-sm-4 d-inline-block">
                                 <label for="network">Network</label>
-                                <input type="text" name="update_network">
+                                <input type="text" name="update_network" placeholder="{{update_show.network.name}}">
                             </div>
                             <div class="col-sm-4 d-inline-block m-4 offset-sm-3">
                                 <label for="rel_date">Release Date</label>
@@ -40,12 +45,16 @@
                         <div class="row">
                             <div class = "d-inline-block offset-sm-3 mb-4">
                                 <label for="desc">Description</label><br>
-                                <input type="textarea" size='38' name="update_show_desc">
+                                <input type="textarea" size='38' name="update_show_desc" placeholder="{{update_show.description}}">
                             </div>
                             
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary mb-4">Add show</button>
+                            <input type="hidden" name="update_show_id" value="{{update_show.id}}">
+                            <button type="submit" class="btn btn-primary mb-4">Update show</button>
+                            <br>
+                            <a href="/shows/{{update_show.id}}">View Show</a>
+                            <br><br>
                         </div>
                         
                     </form>
